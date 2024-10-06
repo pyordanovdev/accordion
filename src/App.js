@@ -18,7 +18,6 @@ const faqs = [
 ];
 
 export default function App() {
-  // const
   return (
     <div>
       <Accordion items={faqs} />
