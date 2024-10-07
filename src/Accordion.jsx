@@ -1,5 +1,9 @@
 import Item from "./Item";
+import { useState } from "react";
+
 function Accordion({ items }) {
+  const [currentOpen, setCurrentOpen] = useState(null);
+
   return (
     <div className='accordion'>
       {items.map((item, index) => {
@@ -9,6 +13,8 @@ function Accordion({ items }) {
             content={item.text}
             number={index}
             key={index}
+            currentOpen={currentOpen}
+            onClickHandle={setCurrentOpen}
           />
         );
       })}

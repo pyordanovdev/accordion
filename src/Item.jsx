@@ -1,12 +1,16 @@
-import { useState } from "react";
-function Item({ title, content, number }) {
-  const [show, setShow] = useState(false);
+function Item({ title, content, number, currentOpen, onClickHandle }) {
+  const isOpen = number === currentOpen;
   return (
-    <div className={show ? "item open" : "item"} onClick={() => setShow(!show)}>
+    <div
+      className={isOpen ? "item open" : "item"}
+      onClick={(e) => {
+        onClickHandle(number === currentOpen ? null : number);
+      }}
+    >
       <span className='number'>{number + 1}</span>
       <span className='title'>{title}</span>
-      <span className='icon'>{show ? "-" : "+"}</span>
-      {show && <div className='content-box'>{content}</div>}
+      <span className='icon'>{isOpen ? "-" : "+"}</span>
+      {isOpen && <div className='content-box'>{content}</div>}
     </div>
   );
 }
